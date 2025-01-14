@@ -7,41 +7,34 @@ const decimal = document.getElementById("decimal");
 const clear = document.getElementById("clear");
 const changeSign = document.getElementById("changeSign");
 const percentage = document.getElementById("percentage");
+
 let expression = [];
 
-const evaluateExpression = () => {
+const evaluateExpression = () => {//function to evaluate expression
     if (expression.length === 3) {
-        const a = Number(expression[0]);
-        const op = expression[1];
-        const b = Number(expression[2]);
-        let ret;
-        if (op === "+") ret = a + b;
-        else if (op === "-") ret = a - b;
-        else if (op === "X") ret = a * b;
-        else ret = a / b;
-        return ret.toFixed(5);
-    }
+        const num1 = Number(expression[0]);
+        const operator = expression[1];
+        const num2 = Number(expression[2]);
+        let answer;
+        if (operator === "+") answer = num1 + num2;
+        else if (operator === "-") answer = num1 - num2;
+        else if (operator === "X") answer = num1 * num2;
+        else answer = num1 / num2;
+        return (answer % 1 === 0) ? answer : answer.toFixed(3);
+    } else return "invalid expression";
+
 };
 
 Array.from(numbers).forEach((number) => {
     number.addEventListener("click", () => {
         if (expression.length !== 1) {
-            if (expression.length === 3) {
-                console.log("expression :>> ", expression);
+            if (expression.length === 3) {//previous expression has been evaluated
                 input.value = "";
                 expression = [];
             }
-            if (
-                (isNaN(input.value) || input.value === "Infinity") &&
-                input.value !== "."
-            ) {
+            if ((isNaN(input.value) || input.value === "Infinity") && input.value !== ".")
                 input.value = "";
-            }
-
-            if (number.innerHTML === "." && String(input.value).includes(".")) {
-                console.log("double decimal");
-                return;
-            }
+            if (number.innerHTML === "." && String(input.value).includes(".")) return;
             input.value = input.value + number.innerHTML;
         } else {
             expression.push(input.value);
@@ -55,20 +48,17 @@ Array.from(operators).forEach((operator) =>
         if (expression.length === 0 && input.value !== "") {
             expression.push(input.value);
             input.value = operator.innerHTML;
-        } else if (expression.length === 1) {
+        }
+        else if (expression.length === 1)
             input.value = operator.innerHTML;
-        } else if (expression.length === 2) {
+        else if (expression.length === 2) {
             expression.push(input.value);
             const ans = evaluateExpression();
             expression = []
             expression.push(ans)
             input.value = operator.innerHTML;
         }
-        else if (
-            expression.length === 3 &&
-            input.value !== "Infinity" &&
-            !isNaN(input.value)
-        ) {
+        else if (expression.length === 3 && input.value !== "Infinity" && !isNaN(input.value)) {
             expression = [];
             expression.push(input.value);
             input.value = operator.innerHTML;
@@ -90,22 +80,18 @@ ac.addEventListener("click", () => {
 });
 
 clear.addEventListener('click', () => {
-    if (isNaN(input.value) || input.value === "Infinity") {
-        ac.click();
-    }
-    else {
-        input.value = String(input.value).slice(0, -1);
-    }
+    if (isNaN(input.value) || input.value === "Infinity" || input.value==="-Infinity") ac.click();
+    else input.value = String(input.value).slice(0, -1);
 })
 
 changeSign.addEventListener('click', () => {
-    if (!isNaN(input.value)) {
+    if (!isNaN(input.value))
         input.value = -(Number(input.value));
-    }
 })
 
 percentage.addEventListener('click', () => {
-    if (!isNaN(input.value)) {
+    if (!isNaN(input.value))
         input.value = Number(input.value) / 100;
-    }
 })
+
+input.addEventListener('keydown', e => e.preventDefault())
