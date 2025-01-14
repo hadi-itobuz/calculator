@@ -1,25 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Train+One&display=swap');
-body{
+
+body {
     background-color: rgb(29, 29, 29);
 }
-.title{
+
+.title {
     font-family: "Train One", serif;
     color: white;
 }
+
 .calculator {
     width: 300px;
     background-color: rgb(212, 235, 255);
+
     @media screen and (min-width:425px) {
         width: 400px;
-        &__input{
+
+        &__input {
             font-size: 24px;
         }
-        &__keypad button{
-            font-size: 24px;
-            &:active{
-                scale: 0.96;
-                transition: 500ms;
+
+        &__keypad {
+            button {
+                font-size: 24px;
+
+                &:active {
+                    scale: 0.95;
+                    transition: 1s;
+                }
+
+                svg {
+                    height: 30px;
+                    width: 50px;
+                }
             }
         }
+
     }
 }

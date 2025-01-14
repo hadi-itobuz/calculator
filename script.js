@@ -7,9 +7,9 @@ const decimal = document.getElementById("decimal");
 const clear = document.getElementById("clear");
 const changeSign = document.getElementById("changeSign");
 const percentage = document.getElementById("percentage");
-
+const history=document.querySelector(".history");
 let expression = [];
-
+const calculationHistory=[];
 const evaluateExpression = () => {//function to evaluate expression
     if (expression.length === 3) {
         const num1 = Number(expression[0]);
@@ -21,7 +21,7 @@ const evaluateExpression = () => {//function to evaluate expression
                 break;
             case '-': answer = num1 - num2;
                 break;
-            case '*': answer = num1 * num2;
+            case 'X': answer = num1 * num2;
                 break;
             case '/': answer = num1 / num2;
                 break;
@@ -30,6 +30,12 @@ const evaluateExpression = () => {//function to evaluate expression
             default:
                 break;
         }
+        calculationHistory.push(expression.join(" ")+` = ${answer}`)
+        const div=document.createElement("div");
+        div.innerText=calculationHistory[calculationHistory.length-1];
+        div.classList.add("dropdown-item")
+        history.appendChild(div);
+
         return (answer % 1 === 0) ? answer : answer.toFixed(3);
     }
     return "invalid expression";

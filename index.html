@@ -12,15 +12,28 @@
 
 <body>
     <div class="container d-flex flex-column justify-content-center align-items-center my-5">
-        <h1 class="mb-5  title">Simple Calculator</h1>
+        <h1 class="title">Simple Calculator</h1>
+        <div class="m-3 p3 dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Calculation history
+              </button>
+              <ul class="dropdown-menu history">
+              </ul>
+        </div>
         <div class="d-flex flex-column align-items-center calculator p-2 p-md-3 rounded">
             <input id="input" type="text" class="mb-2 w-100 form-control-lg text-end calculator__input">
             <div class="container calculator__keypad">
                 <div class="row">
-                    <button class="m-1 btn btn-warning col" id="ac">AC</button>
+                    <button class="m-1 btn btn-warning col fw-bold" id="ac">AC</button>
                     <button class="m-1 btn btn-secondary col" id="changeSign">+/-</button>
                     <button class="m-1 btn btn-secondary col" id="percentage">%</button>
-                    <button class="m-1 btn btn-secondary col" id="clear">C</button>
+                    <button class="m-1 btn btn-secondary col" id="clear"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="16" height="16" fill="currentColor" class="bi bi-backspace" viewBox="0 0 16 16">
+                            <path
+                                d="M5.83 5.146a.5.5 0 0 0 0 .708L7.975 8l-2.147 2.146a.5.5 0 0 0 .707.708l2.147-2.147 2.146 2.147a.5.5 0 0 0 .707-.708L9.39 8l2.146-2.146a.5.5 0 0 0-.707-.708L8.683 7.293 6.536 5.146a.5.5 0 0 0-.707 0z" />
+                            <path
+                                d="M13.683 1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-7.08a2 2 0 0 1-1.519-.698L.241 8.65a1 1 0 0 1 0-1.302L5.084 1.7A2 2 0 0 1 6.603 1zm-7.08 1a1 1 0 0 0-.76.35L1 8l4.844 5.65a1 1 0 0 0 .759.35h7.08a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z" />
+                        </svg></i></button>
                 </div>
                 <div class="row">
                     <button class="m-1 btn btn-secondary col number">1</button>
@@ -49,13 +62,14 @@
                 <div class="row">
                     <button class="m-1 btn btn-secondary col number">00</button>
                     <button class="m-1 btn btn-secondary col number">000</button>
-                    <button class="m-1 btn btn-secondary col number" >0.</button>
+                    <button class="m-1 btn btn-secondary col number">0.</button>
                     <button class="m-1 btn btn-info col operator">^</button>
                 </div>
             </div>
         </div>
     </div>
     <script src="./script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>
