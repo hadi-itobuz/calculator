@@ -16,14 +16,23 @@ const evaluateExpression = () => {//function to evaluate expression
         const operator = expression[1];
         const num2 = Number(expression[2]);
         let answer;
-        if (operator === "+") answer = num1 + num2;
-        else if (operator === "-") answer = num1 - num2;
-        else if (operator === "X") answer = num1 * num2;
-        else if (operator === '^') answer = Math.pow(num1, num2);
-        else answer = num1 / num2;
+        switch (operator) {
+            case '+': answer = num1 + num2;
+                break;
+            case '-': answer = num1 - num2;
+                break;
+            case '*': answer = num1 * num2;
+                break;
+            case '/': answer = num1 / num2;
+                break;
+            case '^': answer = Math.pow(num1, num2);
+                break;
+            default:
+                break;
+        }
         return (answer % 1 === 0) ? answer : answer.toFixed(3);
-    } else return "invalid expression";
-
+    }
+    return "invalid expression";
 };
 
 Array.from(numbers).forEach((number) => {
@@ -33,8 +42,7 @@ Array.from(numbers).forEach((number) => {
                 input.value = "";
                 expression = [];
             }
-            if ((isNaN(input.value) || input.value === "Infinity") && input.value !== ".")
-                input.value = "";
+            if ((isNaN(input.value) || input.value === "Infinity") && input.value !== ".") input.value = "";
             if (number.innerHTML === "." && String(input.value).includes(".")) return;
             input.value = input.value + number.innerHTML;
         } else {
