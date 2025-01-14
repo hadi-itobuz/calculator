@@ -12,8 +12,8 @@
 
 <body>
     <div class="container d-flex justify-content-center my-5">
-        <div class="d-flex flex-column align-items-center calculator">
-            <input id="input" type="text" class="mb-2 w-100 form-control-lg text-end claculator__input">
+        <div class="d-flex flex-column align-items-center calculator p-2 p-md-3 rounded">
+            <input id="input" type="text" class="mb-2 w-100 form-control-lg text-end calculator__input">
             <div class="container calculator__keypad">
                 <div class="row">
                     <button class="m-1 btn btn-warning col" id="ac">AC</button>
@@ -44,6 +44,12 @@
                     <button class="m-1 btn btn-secondary col number">0</button>
                     <button class="m-1 btn btn-secondary col" id="evaluate">=</button>
                     <button class="m-1 btn btn-info col operator">/</button>
+                </div>
+                <div class="row">
+                    <button class="m-1 btn btn-secondary col number">00</button>
+                    <button class="m-1 btn btn-secondary col number">000</button>
+                    <button class="m-1 btn btn-secondary col number" >0.</button>
+                    <button class="m-1 btn btn-info col operator">^</button>
                 </div>
             </div>
         </div>

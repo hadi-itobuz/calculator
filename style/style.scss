@@ -1,3 +1,13 @@
 .calculator {
     width: 300px;
+    background-color: rgb(212, 235, 255);
+    @media screen and (min-width:425px) {
+        width: 400px;
+        &__input{
+            font-size: 24px;
+        }
+        &__keypad button{
+            font-size: 24px;
+        }
+    }
 }

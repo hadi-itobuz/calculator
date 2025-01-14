@@ -19,6 +19,7 @@ const evaluateExpression = () => {//function to evaluate expression
         if (operator === "+") answer = num1 + num2;
         else if (operator === "-") answer = num1 - num2;
         else if (operator === "X") answer = num1 * num2;
+        else if (operator === '^') answer = Math.pow(num1, num2);
         else answer = num1 / num2;
         return (answer % 1 === 0) ? answer : answer.toFixed(3);
     } else return "invalid expression";
@@ -80,7 +81,7 @@ ac.addEventListener("click", () => {
 });
 
 clear.addEventListener('click', () => {
-    if (isNaN(input.value) || input.value === "Infinity" || input.value==="-Infinity") ac.click();
+    if (isNaN(input.value) || input.value === "Infinity" || input.value === "-Infinity") ac.click();
     else input.value = String(input.value).slice(0, -1);
 })
 
